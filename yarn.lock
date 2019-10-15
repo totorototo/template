@@ -785,7 +785,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.2", "@babel/runtime@^7.5.5":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
   dependencies:
@@ -2097,6 +2097,159 @@ cache-base@^1.0.1:
 call-me-maybe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
+
+callbag-basics@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-basics/-/callbag-basics-3.1.0.tgz#5d4ac1887c478323506b182d75d01312cbe0675c"
+  dependencies:
+    callbag "1"
+    callbag-combine "1"
+    callbag-concat "1"
+    callbag-filter "1"
+    callbag-flatten "1"
+    callbag-for-each "1"
+    callbag-from-event "1"
+    callbag-from-iter "1"
+    callbag-from-obs "1"
+    callbag-from-promise "1"
+    callbag-interval "1"
+    callbag-map "1"
+    callbag-merge "2"
+    callbag-pipe "1"
+    callbag-scan "1"
+    callbag-share "1"
+    callbag-skip "1"
+    callbag-take "1"
+
+callbag-combine@1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/callbag-combine/-/callbag-combine-1.2.0.tgz#72628d05f7208d720a29fe1be7ff6fdc221d67df"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-concat@1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/callbag-concat/-/callbag-concat-1.2.1.tgz#3b10bcc5a7cbbcba3bdf1c46136e5d16f36291bd"
+  dependencies:
+    callbag "^1.2.0"
+
+callbag-drop-repeats@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/callbag-drop-repeats/-/callbag-drop-repeats-1.0.0.tgz#bfa4d765880875435746948ec9076b979569e89b"
+
+callbag-filter@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-filter/-/callbag-filter-1.1.0.tgz#d3116bf839702e859ee7e76eb9525925a6bff8b3"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-filter@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/callbag-filter/-/callbag-filter-1.0.1.tgz#82d3b80231cf890fd6e0d61c3a33cd09dcb52570"
+
+callbag-flatten@1:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/callbag-flatten/-/callbag-flatten-1.4.0.tgz#2857c5efe39bc519bc4f245f206a0beee81a50b0"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-for-each@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-for-each/-/callbag-for-each-1.1.0.tgz#8f21877058cc9511aab7d87a1cd150f688c7dbd4"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-from-event@1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/callbag-from-event/-/callbag-from-event-1.2.1.tgz#8f321e3bed1fa48ab82879667eadee24c56bc097"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-from-iter@1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/callbag-from-iter/-/callbag-from-iter-1.2.0.tgz#c1886b08a447cd2efd9a140ec11743d705f26ca9"
+
+callbag-from-obs@1, callbag-from-obs@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/callbag-from-obs/-/callbag-from-obs-1.2.0.tgz#f092f302f302b53abaf1a4d7a5393f9a65fac517"
+  dependencies:
+    symbol-observable "^1.2.0"
+
+callbag-from-promise@1, callbag-from-promise@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/callbag-from-promise/-/callbag-from-promise-1.3.0.tgz#6646822314e224265eda2b26d8f8c7c5f00f0ccc"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-interval@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-interval/-/callbag-interval-1.1.0.tgz#161ae4b5bf36b98bd5ef7caa3c3f8161fc032338"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-map@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-map/-/callbag-map-1.1.0.tgz#6ddd28a3f634fbd2394ef136a181b4ba5e3b062c"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-map@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/callbag-map/-/callbag-map-1.0.1.tgz#a5bcd41cde60c226cdd22f5868beb7b2ecd6c167"
+
+callbag-merge@2:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/callbag-merge/-/callbag-merge-2.0.1.tgz#69c2c031fdb40964fe766399fb5af21f50d3270e"
+
+callbag-pipe@1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/callbag-pipe/-/callbag-pipe-1.2.0.tgz#7c00f47774da0096a7c5afa8a14f7873b5be1daf"
+
+callbag-pipe@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/callbag-pipe/-/callbag-pipe-1.1.1.tgz#f9d9f651f0bb64bc78d91f7132d738f066e3a4cf"
+
+callbag-scan@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-scan/-/callbag-scan-1.1.0.tgz#09e5bea479b849d51c0087be81a28044f9c5ddf3"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-share@1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/callbag-share/-/callbag-share-1.2.0.tgz#5ed2333ebf4cc952d878348bf11f649894a6b989"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-skip@1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-skip/-/callbag-skip-1.1.0.tgz#02df66e5519e8f5dec8f12284663974d7fe35c80"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-start-with@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/callbag-start-with/-/callbag-start-with-3.1.0.tgz#58c7f7cb3f3f44049e130166c2cf884c76e332ac"
+
+callbag-take@1:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/callbag-take/-/callbag-take-1.4.0.tgz#cf14718cb2f0b83825969a6055fce2907b83fcc1"
+  dependencies:
+    callbag "^1.1.0"
+
+callbag-to-obs@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/callbag-to-obs/-/callbag-to-obs-1.0.0.tgz#a198e82d86f1283cd40583970c96c8acc35d9ad3"
+  dependencies:
+    symbol-observable "^1.2.0"
+
+callbag@1, callbag@^1.1.0, callbag@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/callbag/-/callbag-1.2.0.tgz#45e73962a466056c6e5f86f5627b35cf0c4df101"
+
+callbag@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/callbag/-/callbag-1.1.0.tgz#9cbbc3352832da43e764d588ed43121d4b09c42a"
 
 caller-callsite@^2.0.0:
   version "2.0.0"
@@ -3980,6 +4133,12 @@ hmac-drbg@^1.0.0:
     hash.js "^1.0.3"
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
+
+hoist-non-react-statics@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
+  dependencies:
+    react-is "^16.7.0"
 
 hosted-git-info@^2.1.4:
   version "2.8.5"
@@ -6837,7 +6996,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@15.7.2, prop-types@^15.5.4, prop-types@^15.6.2:
+prop-types@15.7.2, prop-types@^15.5.4, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -7024,9 +7183,20 @@ react-error-overlay@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.3.tgz#c378c4b0a21e88b2e159a3e62b2f531fd63bf60d"
 
-react-is@^16.6.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.10.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.10.2.tgz#984120fd4d16800e9a738208ab1fba422d23b5ab"
+
+react-redux@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.1.tgz#ce6eee1b734a7a76e0788b3309bf78ff6b34fa0a"
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^16.9.0"
 
 react-scripts@3.0.1:
   version "3.0.1"
@@ -7086,6 +7256,10 @@ react-scripts@3.0.1:
     workbox-webpack-plugin "4.2.0"
   optionalDependencies:
     fsevents "2.0.6"
+
+react-zap@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-zap/-/react-zap-2.1.0.tgz#22ceb356168f72e5d75e063345731968e23f1d60"
 
 react@16.8.6:
   version "16.8.6"
@@ -7165,6 +7339,42 @@ recursive-readdir@2.2.2:
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
   dependencies:
     minimatch "3.0.4"
+
+redux-devtools-extension@^2.13.8:
+  version "2.13.8"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
+
+redux@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.4.tgz#4ee1aeb164b63d6a1bcc57ae4aa0b6e6fa7a3796"
+  dependencies:
+    loose-envify "^1.4.0"
+    symbol-observable "^1.2.0"
+
+refract-callbag@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/refract-callbag/-/refract-callbag-4.2.3.tgz#56f1e6451047f640343d75b78c352180f50442e6"
+  dependencies:
+    callbag "~1.1.0"
+    callbag-drop-repeats "~1.0.0"
+    callbag-filter "~1.0.1"
+    callbag-from-obs "~1.2.0"
+    callbag-map "~1.0.1"
+    callbag-pipe "~1.1.1"
+    callbag-start-with "~3.1.0"
+    callbag-to-obs "~1.0.0"
+    symbol-observable "~1.2.0"
+
+refract-redux-callbag@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/refract-redux-callbag/-/refract-redux-callbag-1.4.1.tgz#7bfea03f4cd6d913032a4766273ae6afe190945d"
+  dependencies:
+    callbag "~1.1.0"
+    callbag-drop-repeats "~1.0.0"
+    callbag-from-obs "~1.2.0"
+    callbag-map "~1.0.1"
+    callbag-pipe "~1.1.1"
+    symbol-observable "~1.2.0"
 
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
@@ -8051,6 +8261,10 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+symbol-observable@^1.2.0, symbol-observable@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
 symbol-tree@^3.2.2:
   version "3.2.4"
