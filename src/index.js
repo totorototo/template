@@ -1,24 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Provider } from "react-redux";
 import { withEffects } from "refract-callbag";
 import fromPromise from "callbag-from-promise";
-import { filter, flatten, map, merge, combine, pipe } from "callbag-basics";
+import { filter, map, merge, combine, pipe, flatten } from "callbag-basics";
 
-import {
-  Box,
-  Flex,
-  Chrome,
-  Header,
-  Footer,
-  Main,
-  Sidebar,
-  Aside
-} from "./components";
+import { App } from "./components";
 import { theme } from "./theme/theme";
-import { template } from "./components/layout/chrome/template";
-import { media } from "./theme/helpers";
 import { actionCreators, actionTypes, selectors } from "./store";
 import store from "./setupStore";
 
@@ -29,15 +18,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
   }
 `;
-
-const StyledAside = styled(Aside)`
-  ${media.xl`display:flex;`};
-  ${media.lg`display:flex;`};
-  ${media.md`display:none;`};
-  ${media.sm`display:none;`};
-`;
-
-const items = Array.from(Array(50), (x, index) => index + 1);
 
 const apiDependency = {
   getBranch: name =>
@@ -57,8 +37,11 @@ const aperture = (component, { store, api }) => {
   const requestBranch$ = pipe(
     combined$,
     filter(([ request, branches ]) => !Boolean(branches[request.payload])),
-    map(([ { payload: name } ]) => api.getBranch(name)),
-    // flatten,
+    map(([ { payload: name } ]) => {
+      debugger;
+      return api.getBranch(name);
+    }),
+    flatten.default,
     map(
       ({ message, ...response }) =>
         Boolean(message)
@@ -74,7 +57,7 @@ const aperture = (component, { store, api }) => {
     map(actionCreators.selectBranch)
   );
 
-  return merge(selectBranch$);
+  return merge(requestBranch$, selectBranch$);
 };
 
 const handler = ({ store }) => effect => {
@@ -93,52 +76,9 @@ const handler = ({ store }) => effect => {
   }
 };
 
-const Layout = () => (
-  <Chrome
-    overflowX="scroll"
-    height="100vh"
-    width={[ 1 ]}
-    template={template}
-    header={area => (
-      <Header height={56} position="fixed" bg="pink" gridArea={area}>
-        <Box mr={4}>header</Box>
-      </Header>
-    )}
-    footer={area => (
-      <Footer bg="green" gridArea={area}>
-        <Box mr={4}>footer</Box>
-      </Footer>
-    )}
-    sidebar={area => (
-      <Sidebar alignItems={[ "flex-end", "center" ]} bg="blue" gridArea={area}>
-        <Box mr={[ 4, 0 ]}>sd</Box>
-      </Sidebar>
-    )}
-    main={area => (
-      <Main bg="brown" gridArea={area}>
-        {items.map(item => <Box>{item}</Box>)}
-      </Main>
-    )}
-    aside={area => (
-      <StyledAside bg="yellow" gridArea={area}>
-        <Flex
-          width={1}
-          bg="orange"
-          alignItems="flex-start"
-          justifyContent="flex-start"
-          flexDirection="column"
-        >
-          <Box>toto</Box>
-          <Box>titi</Box>
-        </Flex>
-      </StyledAside>
-    )}
-  />
-);
+const EnhancedLayout = withEffects(aperture, { handler })(App);
 
-const EnhancedLayout = withEffects(aperture, { handler })(Layout);
-
-const App = () => {
+const Application = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -150,4 +90,4 @@ const App = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<Application />, rootElement);
