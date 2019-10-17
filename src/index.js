@@ -76,13 +76,13 @@ const handler = ({ store }) => effect => {
   }
 };
 
-const EnhancedLayout = withEffects(aperture, { handler })(App);
+const LayoutWithEffects = withEffects(aperture, { handler })(App);
 
 const Application = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <EnhancedLayout store={store} api={apiDependency} />
+        <LayoutWithEffects store={store} api={apiDependency} />
         <GlobalStyle />
       </ThemeProvider>
     </Provider>
