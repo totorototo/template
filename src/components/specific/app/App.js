@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
-import { actionCreators } from "../../../store";
 import {
   Box,
   Flex,
@@ -16,8 +13,6 @@ import {
 } from "../../index";
 import { media } from "../../../theme/helpers";
 import { template } from "../../layout/chrome/template";
-
-const items = Array.from(Array(50), (x, index) => index + 1);
 
 const StyledAside = styled(Aside)`
   ${media.xl`display:flex;`};

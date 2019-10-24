@@ -63,7 +63,6 @@ const aperture = (component, { api }) => {
 const handler = ({ setState }) => effect => {
   switch (effect.type) {
     case "SET_STATE":
-      console.log(effect.payload);
       return setState(effect.payload);
     default:
       return;
