@@ -1,50 +1,34 @@
 import { combineReducers } from "redux";
 
-const ERROR_RECEIVE = "ERROR_RECEIVE";
-const BRANCH_REQUEST = "BRANCH_REQUEST";
-const BRANCH_RECEIVE = "BRANCH_RECEIVE";
-const BRANCH_SELECT = "BRANCH_SELECT";
+const LOCATION_REQUEST = "LOCATION_REQUEST";
+const LOCATION_RECEIVE = "LOCATION_RECEIVE";
 
 export const actionTypes = {
-  ERROR_RECEIVE,
-  BRANCH_REQUEST,
-  BRANCH_RECEIVE,
-  BRANCH_SELECT
+  LOCATION_REQUEST,
+  LOCATION_RECEIVE
 };
 
-const receiveError = payload => ({
-  type: ERROR_RECEIVE,
+const requestLocation = payload => ({
+  type: LOCATION_REQUEST,
   payload
 });
 
-const requestBranch = payload => ({
-  type: BRANCH_REQUEST,
-  payload
-});
-
-const receiveBranch = payload => ({
-  type: BRANCH_RECEIVE,
-  payload
-});
-
-const selectBranch = payload => ({
-  type: BRANCH_SELECT,
+const receiveLocation = payload => ({
+  type: LOCATION_RECEIVE,
   payload
 });
 
 export const actionCreators = {
-  receiveError,
-  receiveBranch,
-  requestBranch,
-  selectBranch
+  requestLocation,
+  receiveLocation
 };
 
-const branches = (state = {}, action) => {
+const location = (state = {}, action) => {
   switch (action.type) {
-    case BRANCH_RECEIVE: {
+    case LOCATION_RECEIVE: {
       return {
         ...state,
-        [action.payload.name]: action.payload
+        ...action.payload
       };
     }
 
@@ -54,34 +38,10 @@ const branches = (state = {}, action) => {
   }
 };
 
-const active = (state = null, action) => {
-  switch (action.type) {
-    case BRANCH_REQUEST: {
-      return null;
-    }
-
-    case BRANCH_RECEIVE: {
-      return action.payload.name;
-    }
-
-    case BRANCH_SELECT: {
-      return action.payload;
-    }
-
-    default: {
-      return state;
-    }
-  }
-};
-
-const getBranches = state => state.branches;
-const getBranch = name => state => getBranches(state)[name];
-const getActive = state => state.active;
+const getLocation = state => state.location;
 
 export const selectors = {
-  getActive,
-  getBranch,
-  getBranches
+  getLocation
 };
 
-export default combineReducers({ branches, active });
+export default combineReducers({ location });
