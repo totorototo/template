@@ -6,7 +6,11 @@
   "main": "src/index.js",
   "dependencies": {
     "callbag-basics": "^3.1.0",
+    "callbag-drop-repeats": "^1.0.0",
     "callbag-from-promise": "^1.3.0",
+    "callbag-interval": "^1.1.0",
+    "callbag-of": "^2.0.0",
+    "callbag-start-with": "^3.1.0",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
@@ -21,6 +25,7 @@
     "styled-system": "5.1.2"
   },
   "devDependencies": {
+    "callbag-trace": "^1.0.1",
     "typescript": "3.3.3"
   },
   "scripts": {
