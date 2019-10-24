@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 import { actionCreators } from "../../../store";
 import {
@@ -17,8 +16,6 @@ import {
 import { media } from "../../../theme/helpers";
 import { template } from "../../layout/chrome/template";
 
-const items = Array.from(Array(50), (x, index) => index + 1);
-
 const StyledAside = styled(Aside)`
   ${media.xl`display:flex;`};
   ${media.lg`display:flex;`};
@@ -26,7 +23,16 @@ const StyledAside = styled(Aside)`
   ${media.sm`display:none;`};
 `;
 
-const App = ({ tracklocation, setState, ...rest }) => {
+const App = ({ requestLocation, ...rest }) => {
+  const [ track, setTrack ] = useState(false);
+
+  useEffect(
+    () => {
+      requestLocation(track);
+    },
+    [ track ]
+  );
+
   return (
     <Chrome
       {...rest}
@@ -57,10 +63,10 @@ const App = ({ tracklocation, setState, ...rest }) => {
         <Main bg="brown" gridArea={area}>
           <button
             onClick={() => {
-              setState({ tracklocation: !tracklocation });
+              setTrack(!track);
             }}
           >
-            toto
+            Location
           </button>
         </Main>
       )}
@@ -82,4 +88,6 @@ const App = ({ tracklocation, setState, ...rest }) => {
   );
 };
 
-export default App;
+export default connect(null, {
+  requestLocation: actionCreators.requestLocation
+})(App);
