@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { Provider } from "react-redux";
 import { withEffects } from "refract-callbag";
 import fromPromise from "callbag-from-promise";
 import { map, pipe, fromEvent, flatten, combine } from "callbag-basics";
@@ -8,11 +9,13 @@ import CbOf from "callbag-of";
 import interval from "callbag-interval";
 import startWith from "callbag-start-with";
 import dropRepeats from "callbag-drop-repeats";
+import trace from "callbag-trace";
 
 import { App } from "./components";
 import { theme } from "./theme/theme";
 import { location } from "./helpers/location";
-import StateContainer from "./StateContainer";
+import store from "./setupStore";
+import { actionCreators, actionTypes } from "./store";
 
 const GlobalStyle = createGlobalStyle`
   body {    
@@ -26,11 +29,11 @@ const apiDependency = {
   getCurrentlocation: settings => fromPromise(location(settings))
 };
 
-const toState = payload => ({ type: "SET_STATE", payload });
 const isVisible = () => document.visibilityState === "visible";
 
-const aperture = (component, { api }) => {
-  const tracklocation$ = component.observe("tracklocation");
+const aperture = (component, { store, api }) => {
+  // const tracklocation$ = component.observe("tracklocation");
+  const trackLocation$ = store.observe(actionTypes.LOCATION_REQUEST);
 
   const visible$ = pipe(
     fromEvent.default(document, "visibilitychange"),
@@ -39,18 +42,22 @@ const aperture = (component, { api }) => {
   );
 
   const track$ = pipe(
-    combine(visible$, tracklocation$),
-    map(([ visible, tracked ]) => visible && tracked),
+    combine(visible$, trackLocation$),
+    trace(console.log),
+    map(([ visible, tracked ]) => visible && tracked.payload),
     dropRepeats(),
+    trace(console.log),
     map(
       visibleAndTracked =>
         visibleAndTracked
           ? pipe(
-              interval(1000),
+              interval(10000),
               map(() => api.getCurrentlocation()),
               flatten.default,
-              map(({ coords }) => ({ coords })),
-              map(toState)
+              map(({ coords }) => coords),
+              map(({ longitude, latitude }) =>
+                actionCreators.receiveLocation({ longitude, latitude })
+              )
             )
           : CbOf({ type: "Oops" })
     ),
@@ -60,11 +67,10 @@ const aperture = (component, { api }) => {
   return track$;
 };
 
-const handler = ({ setState }) => effect => {
+const handler = ({ store }) => effect => {
   switch (effect.type) {
-    case "SET_STATE":
-      console.log(effect.payload);
-      return setState(effect.payload);
+    case actionTypes.LOCATION_RECEIVE:
+      return store.dispatch(effect);
     default:
       return;
   }
@@ -76,12 +82,12 @@ const LayoutWithEffects = withEffects(aperture, { handler, errorHandler })(App);
 
 const Application = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <StateContainer>
-        {state => <LayoutWithEffects {...state} api={apiDependency} />}
-      </StateContainer>
-      <GlobalStyle />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <LayoutWithEffects store={store} api={apiDependency} />
+        <GlobalStyle />
+      </ThemeProvider>
+    </Provider>
   );
 };
 
