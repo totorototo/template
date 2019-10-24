@@ -32,7 +32,6 @@ const apiDependency = {
 const isVisible = () => document.visibilityState === "visible";
 
 const aperture = (component, { store, api }) => {
-  // const tracklocation$ = component.observe("tracklocation");
   const trackLocation$ = store.observe(actionTypes.LOCATION_REQUEST);
 
   const visible$ = pipe(
@@ -51,7 +50,7 @@ const aperture = (component, { store, api }) => {
       visibleAndTracked =>
         visibleAndTracked
           ? pipe(
-              interval(10000),
+              interval(1000),
               map(() => api.getCurrentlocation()),
               flatten.default,
               map(({ coords }) => coords),
